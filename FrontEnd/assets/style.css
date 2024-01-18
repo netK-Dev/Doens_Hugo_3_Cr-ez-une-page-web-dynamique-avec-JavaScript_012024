@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;;
 }
 ol, ul {
 	list-style: none;
@@ -48,10 +49,12 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.body-cont {
+	max-width: 1140px;
+	margin:auto;
 }
 header {
 	display: flex;
@@ -178,6 +181,19 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+}
+
+footer {
+	display: flex;
+	align-items: center;
+	background-color: #FFFFFF;
+	height: 60px;
+	width: auto;
+}
+
+footer nav {
+	margin-left: auto;
+	padding-right: 5em;
 }
 
 footer nav ul {
