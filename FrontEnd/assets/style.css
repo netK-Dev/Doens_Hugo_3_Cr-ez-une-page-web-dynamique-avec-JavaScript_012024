@@ -29,6 +29,7 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+	height: auto;
 	line-height: 1;
 	background-color: #FFFEF8;;
 }
@@ -42,6 +43,14 @@ blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+a:hover {
+	cursor: pointer;
+	color: #B1663C;
 }
 table {
 	border-collapse: collapse;
@@ -64,6 +73,10 @@ header {
 section {
 	margin: 50px 0
 }
+#logoInsta {
+	height: 22px;
+	width: auto;
+}
 
 h1{
 	display: flex;
@@ -78,7 +91,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -94,10 +106,16 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
+}
+nav ul li {
+    display: flex;
+    padding: 0 20px;
+    font-size: 1.2em;
+    font-weight: 200;
+    justify-content: center;
 }
 nav li {
-	padding: 0 10px;
+	padding: 0 20px;
 	font-size: 1.2em;
 }
 
