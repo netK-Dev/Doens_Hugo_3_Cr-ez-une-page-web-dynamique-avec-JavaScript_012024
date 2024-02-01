@@ -87,6 +87,9 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+article p {
+	font-size: 14px;
+}
 nav ul {
 	display: flex;
 	align-items: center;
