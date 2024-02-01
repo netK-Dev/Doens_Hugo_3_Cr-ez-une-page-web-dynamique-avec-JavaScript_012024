@@ -134,6 +134,8 @@ li:hover {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	color: #3D3D3D;
+	font-size: 13px;
 }
 
 .gallery img {
