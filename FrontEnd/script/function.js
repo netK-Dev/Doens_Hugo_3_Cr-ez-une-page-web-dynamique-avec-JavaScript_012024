@@ -124,7 +124,24 @@ async function filterListener() {
                     galerieTravaux.appendChild(element);
                     console.log("Les travaux de type Hotels & restaurants sont affichés");
                 };
-            }
+            };
         });
     });
 };
+
+
+function styleFilter() {
+    const btnFilter = document.querySelectorAll(".btnFiltre");
+
+    for (let i=0; i<btnFilter.length; i++) {
+        btnFilter[i].addEventListener("click", () => {
+
+            for (let x=0; x<btnFilter.length; x++) {
+                btnFilter[x].classList.remove("on");
+            }
+
+            btnFilter[i].classList.add("on");
+        });
+    };
+};
+
