@@ -1,4 +1,4 @@
-async function fetchTravaux() {
+async function fetchWorks() {
     let Travaux;
     try {
         const rep = await fetch("http://localhost:5678/api/works"); // Récupération des travaux sur l'API
@@ -16,7 +16,7 @@ async function fetchTravaux() {
 
 
 async function initPage() {
-    lstTravaux = await fetchTravaux();
+    lstTravaux = await fetchWorks();
     galerieTravaux.innerHTML = "";
     
     for (let i=0; i<lstTravaux.length; i++) {
@@ -36,7 +36,7 @@ async function initPage() {
 
 
 async function filterListener() {
-    lstTravaux = await fetchTravaux()
+    lstTravaux = await fetchWorks()
     let btnsFiltre = document.querySelectorAll(".btnFiltre");
     btnsFiltre.forEach(btnFiltre => {
         btnFiltre.addEventListener("click", () => {
@@ -144,4 +144,6 @@ function styleFilter() {
         });
     };
 };
+
+
 
