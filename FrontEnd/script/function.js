@@ -147,3 +147,15 @@ function styleFilter() {
 
 
 
+
+
+//    function LogListener() {
+//        const userToken = localStorage.getItem('token');
+//        console.log(userToken);
+//
+//        if (userToken != null) {
+//         // Fonction pour mettre en place les fonctionaliter administrateur
+//        }
+//    };
+
+
