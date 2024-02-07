@@ -6,7 +6,6 @@ async function fetchWorks() {
             throw new Error(`Erreur HTTP : ${rep.status}`); // Échec avec l'API
         }
         Travaux = await rep.json(); // Conversion des données au format JSON
-        console.log("Travaux récupérés :", Travaux);
     } catch(error) {
         console.error("Erreur lors de la récupération des travaux :", error);
         Travaux = [];
@@ -158,4 +157,6 @@ function styleFilter() {
 //        }
 //    };
 
-
+// function logOut() {
+//     localStorage.removeItem('token');
+// };

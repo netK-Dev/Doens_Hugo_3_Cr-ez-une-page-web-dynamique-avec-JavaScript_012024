@@ -6,3 +6,4 @@ styleFilter()           // ecouteur d'evenement sur les btn filtres pour changer
 filterListener()        // ecouteur d'evenement pour appliquer les filtres
 
 LogListener()
+logOut();
