@@ -164,3 +164,4 @@ function sessionInit() {
     cont_InOut.innerHTML = "";
     cont_InOut.appendChild(lien)
 };
+

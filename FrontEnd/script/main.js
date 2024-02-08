@@ -21,3 +21,11 @@ window.addEventListener('load', function() {
 initPage()              // initialisation des travaux sur la page
 styleFilter()           // ecouteur d'evenement sur les btn filtres pour changer leur style
 filterListener()        // ecouteur d'evenement pour appliquer les filtres
+
+
+document.getElementById('btnModifier').addEventListener('click', () => {
+    document.getElementById('modale').showModal(); 
+});
+document.getElementById("fermerModale").addEventListener("click", () => {
+    document.getElementById('modale').close();
+});
