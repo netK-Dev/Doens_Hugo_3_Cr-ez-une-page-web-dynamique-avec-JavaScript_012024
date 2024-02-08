@@ -145,18 +145,22 @@ function styleFilter() {
 };
 
 
+function sessionInit() {
+    const cont_InOut = document.getElementById('log');
+    const lien = document.createElement('a');
+    const editHeader = document.querySelector(".editMode");
+    const filtres = document.querySelector('.filtres');
+    const divMesProjet = document.querySelector(".mesProjet");
+    const modiferProjet = document.getElementById("modifier");
+    
+    editHeader.style.display = "flex";
+    modiferProjet.style.display = "flex";
+    filtres.style.display = 'none';
+    divMesProjet.style.marginBottom = "124px";
 
+    lien.setAttribute("id", "logout");
+    lien.textContent = "logout";
 
-
-//    function LogListener() {
-//        const userToken = localStorage.getItem('token');
-//        console.log(userToken);
-//
-//        if (userToken != null) {
-//         // Fonction pour mettre en place les fonctionaliter administrateur
-//        }
-//    };
-
-// function logOut() {
-//     localStorage.removeItem('token');
-// };
+    cont_InOut.innerHTML = "";
+    cont_InOut.appendChild(lien)
+};

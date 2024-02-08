@@ -66,12 +66,34 @@ body {
 	margin:auto;
 }
 header {
+	margin-top: 45px;
 	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+	width: 100%;
 }
+
+.editMode {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: black;
+	color: white;
+	height: 56px;
+	width: 100%;
+	margin-bottom: 35px;
+}
+.editMode img {
+	margin-right: 8px;
+}
+
+.head-cont {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+
+}
+
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 #logoInsta {
 	height: 22px;
@@ -99,6 +121,7 @@ h2{
 	font-size: 30px;
 	color: #1D6154
 }
+
 article p {
 	font-size: 14px;
 }
@@ -125,6 +148,7 @@ li:hover {
 	color: #B1663C;
 }
 #introduction {
+	margin-top: 96px;
 	display: flex;
 	align-items: center;
 }
@@ -151,10 +175,10 @@ li:hover {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin-top: 155px;
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .btnFiltre {
 	font-size: 19px;
@@ -190,9 +214,35 @@ li:hover {
 	margin-bottom: 8px;
 
 }
+
+.mesProjet {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 2em;
+	font-family: "syne";
+	padding-left: 40px;
+}
+.mesProjet h2 {
+	margin-right: 45px;
+}
+#btnModifier:hover {
+	color: #1D6154;
+	cursor: pointer;
+}
+#modifier img {
+	color: black;
+	margin-right: 8px;
+}
+#modifier {
+	display: none;
+}
+
+
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
+	margin-top: 25px;
 }
 #contact > * {
 	text-align: center;

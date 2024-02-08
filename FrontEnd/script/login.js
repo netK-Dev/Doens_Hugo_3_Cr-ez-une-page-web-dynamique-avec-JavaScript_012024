@@ -19,7 +19,7 @@ async function log(email, password) {
         console.log(user.token);
 
         localStorage.setItem('token', user.token);  // stokage du token dans le localStorage
-        // window.location.href = 'index.html';
+        window.location.href = 'index.html';
         
     } catch (error) {
         console.error('Erreur lors de la connexion:', error);
