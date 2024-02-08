@@ -102,6 +102,15 @@ h2 {
     color: #1D6154;
     font-family: syne;
 }
+
+#Error {
+    color: rgb(255, 38, 0);
+    font-size: 18px;
+}
+#wrongPass, #wrongEmail {
+    display: none;
+}
+
 .emailForm, .mdpForm {
     display: flex;
     flex-direction: column;

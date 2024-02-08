@@ -1,3 +1,9 @@
+
+function resetErrors() {
+    errorEmail.style.display = "none";
+    errorPass.style.display = "none";
+}
+
 async function log(email, password) {
     const data = { email, password };
 
@@ -10,8 +16,14 @@ async function log(email, password) {
             body: JSON.stringify(data)
         });
 
+        if (respLog.status == 401) {
+            errorPass.style.display = "inline";
+        } else if (respLog.status == 404) {
+            errorEmail.style.display = "inline";
+        }
+
         if (!respLog.ok) {
-            throw new Error(`Erreur ${repLog.status}: ${await repLog.text()}`);
+            throw new Error(`Erreur ${respLog.status}: ${await respLog.text()}`);
         }
 
         const user = await respLog.json();
@@ -26,13 +38,16 @@ async function log(email, password) {
     }
 };
 
+const errorPass = document.getElementById("wrongPass");
+const errorEmail = document.getElementById("wrongEmail");
 const input_email = document.getElementById("emailInput");
 const input_password = document.getElementById("passInput");
 const btnSubmit = document.getElementById("btnSubmit");
 
 btnSubmit.addEventListener("click", (event) => {
     event.preventDefault(); // Empêche le formulaire de se soumettre normalement
-
+    
+    resetErrors()
     const E = input_email.value;        // récupération de l'email
     const P = input_password.value;     // récupération du MDP
 
