@@ -165,3 +165,75 @@ function sessionInit() {
     cont_InOut.appendChild(lien)
 };
 
+
+async function initModaleGallery() {
+    document.querySelector(".GalleryModale").innerHTML = "";
+
+    document.getElementById("GalleryModaleZone").style.display = "flex";
+    document.getElementById("ajoutPhoto").style.display = "none"
+    const back = document.getElementById("back")
+    if (back) {
+        back.remove()       // enlever la fleche si elle existe
+    };
+
+    let gallery = document.querySelector(".GalleryModale");
+    let Works = await fetchWorks();
+    let rows = Math.ceil(Works.length / 5);
+    console.log(Works);
+
+    // Définir le nombre de lignes dans la grille de la galerie
+    gallery.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+
+    // Parcourir chaque élément dans Works
+    for (let i = 0; i < Works.length; i++) {
+        let Work = document.createElement('div');
+        let square = document.createElement('div');
+        let trash = document.createElement('img');
+
+        trash.setAttribute("src", "assets/icones/trash.svg");
+        square.classList.add("blackSquare");
+        square.appendChild(trash);
+        
+
+        Work.classList.add("modaleWork");
+        Work.style.backgroundImage = `url(${Works[i].imageUrl})`;
+        Work.appendChild(square);
+
+       
+        gallery.appendChild(Work);
+        
+        square.addEventListener("click", () => {
+            console.log(Works[i]);
+        });
+    };
+
+    document.getElementById("addPic").addEventListener("click", () => {
+        // fonction pour afficher le formulaire.
+        console.log("Bouton cliqué..");
+        initAddWork()
+    });
+};
+
+function initAddWork() {
+    document.getElementById("GalleryModaleZone").style.display = "none";
+    document.getElementById("ajoutPhoto").style.display = "flex";
+
+    const iconesZone = document.querySelector(".iconeModale");
+    iconesZone.style.flexDirection = "row-reverse";
+
+    // Vérifiez si l'icône de la flèche retour existe déjà
+    let backExists = document.getElementById("back");
+    if (!backExists) {
+        // Si elle n'existe pas, créez et ajoutez l'icône
+        const back = document.createElement("img");
+        back.setAttribute("src", "assets/icones/arrow-left.svg");
+        back.style.height = "21px";
+        back.style.width = "21px";
+        back.id = "back";
+        iconesZone.appendChild(back);  // Ajout de la flèche retour
+
+        back.addEventListener("click", () => {
+            initModaleGallery()
+        });
+    }
+}
