@@ -215,8 +215,11 @@ async function initModaleGallery() {
 };
 
 function initAddWork() {
+    const ajoutPhoto = document.getElementById("ajoutPhoto");
+
     document.getElementById("GalleryModaleZone").style.display = "none";
-    document.getElementById("ajoutPhoto").style.display = "flex";
+    ajoutPhoto.style.display = "flex";
+    
 
     const iconesZone = document.querySelector(".iconeModale");
     iconesZone.style.flexDirection = "row-reverse";
