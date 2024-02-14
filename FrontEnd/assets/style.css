@@ -393,7 +393,7 @@ dialog::backdrop {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 38px;
+	padding-top: 28px;
 	border-top: #B3B3B3 solid 1px;
 }
 #addPic {
@@ -444,6 +444,11 @@ dialog::backdrop {
 	cursor: pointer;
 	position: relative;
   }
+  .inputImg-area {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
   
   .upload-icon {
 	font-size: 24px;
@@ -491,7 +496,7 @@ dialog::backdrop {
 	box-shadow: 0px 4px 14px 0px rgb(0, 0, 0, 0.09);
 	border: none;
 	margin-top: 13px;
-	margin-bottom: 47px;
+	margin-bottom: 77px;
   }
   #title:focus-visible, #category:focus-visible {
 	outline: none;
@@ -500,7 +505,7 @@ dialog::backdrop {
 
   #formContSubmit {
 	width: 444px;
-	padding-top: 32px;
+	padding-top: 46px;
 	display: flex;
 	align-items: center;
 	justify-content: center;

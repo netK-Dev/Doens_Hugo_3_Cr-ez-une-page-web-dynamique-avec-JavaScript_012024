@@ -142,6 +142,7 @@
 			<div class="iconeModale">
 				<img src="assets/icones/croix.svg" id="fermerModale">
 			</div>
+			
 			<div id="GalleryModaleZone">
 				<p>Galerie photo</p>
 				<div class="GalleryModale">
@@ -153,17 +154,27 @@
 			</div>
 			<div id="ajoutPhoto">
 				<p>Ajout photo</p>
+
 				<form id="photoUploadForm" class="upload-form">
+
 					<div class="upload-area" onclick="document.getElementById('imageUpload').click()">
-					  <div class="upload-icon"><img src="assets/icones/picture-svgrepo-com 1.svg"></div>
-					  <button class="upload-button">+ Ajouter photo</button>
-					  <div class="file-types">jpg, png : 4mo max</div>
-					  <input type="file" id="imageUpload" accept="image/png, image/jpeg" hidden />
+
+					  <div class="inputImg-area">
+							<div class="upload-icon"><img src="assets/icones/picture-svgrepo-com 1.svg"></div>
+					  		<button class="upload-button">+ Ajouter photo</button>
+					  		<div class="file-types">jpg, png : 4mo max</div>
+					  		<input type="file" id="imageUpload" accept="image/png, image/jpeg" hidden />
+						</div>
+
+						<div id="showImg"></div>
+
 					</div>
+
 					<div class="input-container">
 						<label for="title">Titre</label>
 					  <input type="text" id="title" name="title" required />
 					</div>
+
 					<div class="input-container">
 						<label for="category">Catégorie</label>
 					  <select id="category" name="category" required>
@@ -173,13 +184,17 @@
 						<option>Hotels & restaurants</option>
 					  </select>
 					</div>
+
 					<div id="formContSubmit">
 						<button type="submit" class="submit-button">Valider</button>
 					</div>
+
 				  </form>
+
 			</div>
 		</div>
 	</dialog>
+
 
 </body>
 </html>
