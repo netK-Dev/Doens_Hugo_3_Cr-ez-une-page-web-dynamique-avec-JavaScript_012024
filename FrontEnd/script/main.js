@@ -11,6 +11,7 @@ window.addEventListener('load', function() {
         this.document.getElementById('btnModifier').addEventListener('click', () => {
             document.getElementById('modale').showModal();
             initModaleGallery();
+            inputListener();
         });
         this.document.getElementById("modale").addEventListener("click", function(event) {
             if (event.target === this) {

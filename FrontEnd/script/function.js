@@ -240,3 +240,70 @@ function initAddWork() {
         });
     }
 }
+
+
+function inputListener() {
+    const inputIMG = document.getElementById("imageUpload");
+    const showIMG = document.getElementById("showImg");
+    const inputIMG_area = document.querySelector(".inputImg-area");
+    const inputTitle = document.getElementById("title");
+    const inputCategory = document.getElementById("category");
+    const btnSubmit = document.querySelector(".submit-button");
+    let title = "";
+    let img = "";
+    let category = "";
+
+    // Désactiver le bouton de soumission initialement
+    btnSubmit.setAttribute("type", "");
+
+    function checkFormCompletion() {
+        // Vérifie si tous les champs requiss sont remplis
+        if (title !== "" && img !== "" && category !== "") {
+            console.log("Tous les champs sont remplis. Prêt à soumettre.");
+            btnSubmit.setAttribute("type", "submit"); // Activer le bouton
+            btnSubmit.style.backgroundColor = "#1D6154";
+            submitWork()
+        } else {
+            btnSubmit.setAttribute("type", ""); // Désactiver le bouton si la condition n'est pas remplie
+        }
+    }
+
+    inputIMG.addEventListener("change", function() {
+        if (this.files && this.files[0]) {
+            img = URL.createObjectURL(this.files[0]);
+            showIMG.style.backgroundImage = 'url(' + img + ')';
+            showIMG.style.backgroundSize = 'cover';
+            showIMG.style.backgroundPosition = 'center';
+            inputIMG_area.style.display = "none";
+            showIMG.style.display = "block";
+        } else {
+            inputIMG_area.style.display = "flex";
+            showIMG.style.display = "none";
+            img = ""; // Réinitialiser img si aucun fichier n'est sélectionné
+        }
+        checkFormCompletion(); // Vérifier après chaque modification
+    });
+
+    inputTitle.addEventListener("change", () => {
+        title = inputTitle.value.trim();
+        console.log(title);
+        checkFormCompletion(); // Vérifier après chaque modification
+    });
+
+    inputCategory.addEventListener("change", () => {
+        category = inputCategory.value;
+        console.log(category);
+        checkFormCompletion(); // Vérifier après chaque modification
+    });
+}
+
+async function submitWork() {
+    const formulaire = document.getElementById("photoUploadForm");
+
+    formulaire.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log("envoyer !")
+    });
+}
+
+
