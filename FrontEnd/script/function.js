@@ -255,6 +255,7 @@ function inputListener() {
 
     // Désactiver le bouton de soumission initialement
     btnSubmit.setAttribute("type", "");
+    checkFormCompletion();
 
     function checkFormCompletion() {
         // Vérifie si tous les champs requiss sont remplis
@@ -262,9 +263,13 @@ function inputListener() {
             console.log("Tous les champs sont remplis. Prêt à soumettre.");
             btnSubmit.setAttribute("type", "submit"); // Activer le bouton
             btnSubmit.style.backgroundColor = "#1D6154";
-            submitWork()
+            submitWork();
+            title = "";
+            img = "";
+            category = "";
         } else {
             btnSubmit.setAttribute("type", ""); // Désactiver le bouton si la condition n'est pas remplie
+            btnSubmit.style.backgroundColor = "#ccc"
         }
     }
 
@@ -299,10 +304,15 @@ function inputListener() {
 
 async function submitWork() {
     const formulaire = document.getElementById("photoUploadForm");
+    const showIMG = document.getElementById("showImg");
+    const inputIMG_area = document.querySelector(".inputImg-area");
 
     formulaire.addEventListener("submit", function(event) {
         event.preventDefault();
         console.log("envoyer !")
+        formulaire.reset();
+        inputIMG_area.style.display = "flex";
+        showIMG.style.display = "none";
     });
 }
 
