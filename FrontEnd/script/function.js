@@ -236,12 +236,12 @@ async function initModaleGallery() {
 
 
 async function deleteWork(workId) {
-    const url = `http://localhost:5678/api/works/${workId}`; // Correction de l'URL
+    const url = `http://localhost:5678/api/works/${workId}`;
     const token = localStorage.getItem('token');
     const options = {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}` // Utilisation de la variable token
+          'Authorization': `Bearer ${token}`
         }
     };
 
@@ -251,7 +251,6 @@ async function deleteWork(workId) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
         console.log('Travail supprimé avec succès');
-        // Traitement supplémentaire si nécessaire, par exemple, mise à jour de l'UI
     } catch(error) {
         console.error('Erreur lors de la suppression du travail:', error);
     }
@@ -266,10 +265,10 @@ function initAddWork() {
     ajoutPhoto.style.display = "flex";
     iconesZone.style.flexDirection = "row-reverse";
 
-    // Vérifiez si l'icône de la flèche retour existe déjà
+    // Vérifie si l'icône de la flèche retour existe déjà
     let backExists = document.getElementById("back");
     if (!backExists) {
-        // Si elle n'existe pas, créez et ajoutez l'icône
+        // Si elle n'existe pas, on la créer
         const back = document.createElement("img");
         back.setAttribute("src", "assets/icones/arrow-left.svg");
         back.style.height = "21px";
@@ -286,7 +285,7 @@ function initAddWork() {
 
 
 function checkFormCompletion() {
-    // Vérifie si tous les champs requiss sont remplis
+    // Vérifie si tous les champs requis sont remplis
     if (title !== "" && img !== "" && category !== "") {
         console.log("Tous les champs sont remplis. Prêt à soumettre.");
         btnSubmit.setAttribute("type", "submit"); // Activer le bouton
