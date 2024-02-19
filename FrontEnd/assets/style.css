@@ -365,7 +365,7 @@ dialog::backdrop {
 	justify-content: center;
 	align-items: center;
 }
-.modaleWork {
+.modalWork {
     background-size: cover; /* Assure que l'image couvre entièrement l'élément */
     background-position: center; /* Centre l'image */
 	height: 100%;

@@ -1,5 +1,5 @@
 const btnModif = document.getElementById('btnModifier');
-const galerieTravaux = document.querySelector(".gallery");
+const galleryWorks = document.querySelector(".gallery");
 const modale = document.getElementById("modale");
 const btnFermerModale = document.getElementById("fermerModale");
 const btnAjoutPhoto = document.getElementById("addPic");
@@ -25,7 +25,7 @@ window.addEventListener('load', function() {
 
         btnModif.addEventListener('click', () => {
             document.getElementById('modale').showModal();
-            initModaleGallery();
+            initModalGallery();
         });
         modale.addEventListener("click", function(event) {
             if (event.target === this) {
@@ -39,9 +39,6 @@ window.addEventListener('load', function() {
 
 
         btnAjoutPhoto.addEventListener("click", () => {
-            // fonction pour afficher le formulaire.
-            console.log("Bouton cliqué..");
-            // Désactiver le bouton de soumission initialement
             btnSubmit.setAttribute("type", "");
             checkFormCompletion();
             initAddWork()
@@ -66,21 +63,21 @@ window.addEventListener('load', function() {
             } else {
                 inputIMG_area.style.display = "flex";
                 showIMG.style.display = "none";
-                img = ""; // Réinitialiser img si aucun fichier n'est sélectionné
+                img = "";
             }
-            checkFormCompletion(); // Vérifier après chaque modification
+            checkFormCompletion();
         });
     
         inputTitle.addEventListener("change", () => {
             title = inputTitle.value.trim();
             console.log(title);
-            checkFormCompletion(); // Vérifier après chaque modification
+            checkFormCompletion(); 
         });
     
         inputCategory.addEventListener("change", () => {
             category = inputCategory.value;
             console.log(category);
-            checkFormCompletion(); // Vérifier après chaque modification
+            checkFormCompletion(); 
         });
 
 
@@ -101,8 +98,10 @@ window.addEventListener('load', function() {
     };
 });
   
-
-initPage()              // initialisation des travaux sur la page
-styleFilter()           // ecouteur d'evenement sur les btn filtres pour changer leur style
-filterListener()        // ecouteur d'evenement pour appliquer les filtres
+// initialisation des travaux sur la page
+initPage()
+// ecouteur d'evenement sur les btn filtres pour changer leur style
+styleFilter()
+// ecouteur d'evenement pour appliquer les filtres
+filterListener()
 

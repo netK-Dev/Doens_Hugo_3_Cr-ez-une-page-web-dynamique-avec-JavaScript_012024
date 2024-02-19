@@ -27,10 +27,8 @@ async function log(email, password) {
         }
 
         const user = await respLog.json();
-        console.log(user);
-        console.log(user.token);
-
-        localStorage.setItem('token', user.token);  // stokage du token dans le localStorage
+        // stokage du token dans le localStorage
+        localStorage.setItem('token', user.token);
         window.location.href = 'index.html';
         
     } catch (error) {
@@ -45,11 +43,14 @@ const input_password = document.getElementById("passInput");
 const btnSubmit = document.getElementById("btnSubmit");
 
 btnSubmit.addEventListener("click", (event) => {
-    event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+    // Empêche le formulaire de se soumettre normalement
+    event.preventDefault();
     
     resetErrors()
-    const E = input_email.value;        // récupération de l'email
-    const P = input_password.value;     // récupération du MDP
+    // récupération de l'email
+    const E = input_email.value;
+    // récupération du MDP
+    const P = input_password.value;
 
     log(E, P);
 });
