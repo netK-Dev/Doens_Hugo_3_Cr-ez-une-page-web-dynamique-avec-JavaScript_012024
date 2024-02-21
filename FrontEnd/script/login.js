@@ -1,9 +1,12 @@
-
+// Fonction pour réinitialiser les erreurs
 function resetErrors() {
     errorEmail.style.display = "none";
     errorPass.style.display = "none";
 }
 
+
+
+// Fonction pour se connecter
 async function log(email, password) {
     const data = { email, password };
 
@@ -36,13 +39,15 @@ async function log(email, password) {
     }
 };
 
+
+
 const errorPass = document.getElementById("wrongPass");
 const errorEmail = document.getElementById("wrongEmail");
 const input_email = document.getElementById("emailInput");
 const input_password = document.getElementById("passInput");
-const btnSubmit = document.getElementById("btnSubmit");
+const Submit = document.getElementById("btnSubmit");
 
-btnSubmit.addEventListener("click", (event) => {
+Submit.addEventListener("click", (event) => {
     // Empêche le formulaire de se soumettre normalement
     event.preventDefault();
     
