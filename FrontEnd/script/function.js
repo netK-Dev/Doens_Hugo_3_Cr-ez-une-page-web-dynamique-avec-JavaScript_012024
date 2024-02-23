@@ -21,7 +21,7 @@ async function fetchWorks() {
 
 
 
-async function fetchCat() {
+async function fetchCategories() {
     let categories;
     try {
         // Récupération des catégories depuis l'API
@@ -72,7 +72,13 @@ async function initPage() {
 async function filterListener() { // Fonction a modifier pour récupérer les catégories dynamiquement
     // Chargement de la liste des travaux
     let worksList = await fetchWorks();
+    let catList = await fetchCategories();
+    console.log(catList);
     let filterButtons = document.querySelectorAll(".btnFiltre");
+
+    for (let i=0; i<catList.length; i++) {
+        console.log(catList[i].name);
+    }
 
     // Ajout d'un écouteur d'événement sur chaque bouton
     filterButtons.forEach(filterButton => {
