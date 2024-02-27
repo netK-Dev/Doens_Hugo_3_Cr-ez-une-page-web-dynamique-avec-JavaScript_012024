@@ -7,9 +7,10 @@ function resetErrors() {
 
 
 // Fonction pour se connecter
-async function log(email, password) {
+async function log(email, password) { 
     const data = { email, password };
 
+    // Envoie de la requete avec les informations de l'utilisateur
     try {
         let respLog = await fetch("http://localhost:5678/api/users/login", {
             method: 'POST',
@@ -19,9 +20,12 @@ async function log(email, password) {
             body: JSON.stringify(data)
         });
 
+        // Si mot de passe incorecte
         if (respLog.status == 401) {
             errorPass.style.display = "inline";
-        } else if (respLog.status == 404) {
+        } 
+        // Si email introuvable
+        else if (respLog.status == 404) {
             errorEmail.style.display = "inline";
         }
 
@@ -30,8 +34,10 @@ async function log(email, password) {
         }
 
         const user = await respLog.json();
+
         // stokage du token dans le localStorage
         localStorage.setItem('token', user.token);
+        // Retour sur index.html
         window.location.href = 'index.html';
         
     } catch (error) {
@@ -40,22 +46,24 @@ async function log(email, password) {
 };
 
 
-
+// Récupération des éléments du DOM
 const errorPass = document.getElementById("wrongPass");
 const errorEmail = document.getElementById("wrongEmail");
 const input_email = document.getElementById("emailInput");
 const input_password = document.getElementById("passInput");
 const Submit = document.getElementById("btnSubmit");
 
+
 Submit.addEventListener("click", (event) => {
     // Empêche le formulaire de se soumettre normalement
     event.preventDefault();
-    
+    // Réinitialise les erreurs
     resetErrors()
     // récupération de l'email
     const E = input_email.value;
-    // récupération du MDP
+    // récupération du mot de passe
     const P = input_password.value;
 
+    // Tentative de connexion
     log(E, P);
 });

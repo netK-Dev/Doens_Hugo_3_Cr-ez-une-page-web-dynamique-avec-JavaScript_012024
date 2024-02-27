@@ -446,6 +446,7 @@ dialog::backdrop {
 	margin-bottom: 36px;
 	cursor: pointer;
 	position: relative;
+	margin-bottom: 50px;
   }
 
 #showImg {

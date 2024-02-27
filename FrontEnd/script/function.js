@@ -46,7 +46,7 @@ async function initPage() {
 
 
 
-async function filterListener() { // Fonction a modifier pour récupérer les catégories dynamiquement
+async function filterListener() {
     // Chargement de la liste des travaux
     let worksList = await fetchWorks();
     let filterButtons = document.querySelectorAll(".btnFiltre");
@@ -151,14 +151,8 @@ async function filterListener() { // Fonction a modifier pour récupérer les ca
             };
         });
     });
-};
 
-
-
-// Fonction qui ajoute les écouteur sur les boutons filtre pour le changement de couleur
-function styleFilter() {
-    const filterButtons = document.querySelectorAll(".btnFiltre");
-
+    // Pour gérer le style des boutons filtres
     for (let i = 0; i < filterButtons.length; i++) {
         filterButtons[i].addEventListener("click", () => {
 
@@ -181,16 +175,15 @@ function sessionInit() {
     const filters = document.querySelector('.filtres');
     const myProjectsDiv = document.querySelector(".mesProjet");
     const editProjectButton = document.getElementById("modifier");
-    // Création du lien logOut
-    const logoutLink = document.createElement('a');
-    
+
     // Definition des style
     editHeader.style.display = "flex";
     editProjectButton.style.display = "flex";
     filters.style.display = 'none';
     myProjectsDiv.style.marginBottom = "124px";
 
-    // ajout du lien logOut
+    // Création du lien logOut
+    const logoutLink = document.createElement('a');
     logoutLink.setAttribute("id", "logout");
     logoutLink.textContent = "logout";
     loginContainer.innerHTML = "";
@@ -202,21 +195,22 @@ function sessionInit() {
 // Fonction pour initialiser la modale
 async function initModalGallery() {
     document.querySelector(".GalleryModale").innerHTML = "";
-
+    document.getElementById("ajoutPhoto").style.display = "none";
     document.getElementById("GalleryModaleZone").style.display = "flex";
-    document.getElementById("addPic").style.display = "block"
-    const backButton = document.getElementById("back")
-    // Elever le bouton si il existe
+    document.getElementById("addPic").style.display = "block";
+
+    // Elever retour le bouton si il existe
+    const backButton = document.getElementById("back");
     if (backButton) {
         backButton.remove();
     };
 
-    let gallery = document.querySelector(".GalleryModale");
+    // Récupération des travaux
     let works = await fetchWorks();
-    let rows = Math.ceil(works.length / 5);
-    console.log(works);
-
+    
     // definie le nombre de lignes dynamiquement
+    let gallery = document.querySelector(".GalleryModale");
+    let rows = Math.ceil(works.length / 5);
     gallery.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
 
     // Créer la galerie dans la modale
@@ -237,10 +231,12 @@ async function initModalGallery() {
        
         gallery.appendChild(work);
         
+        // Ajout de l'événement de suppression sur chaques carrés noirs
         square.addEventListener("click", function(event) {
-            event.preventDefault()
-            console.log(works[i].id);
+            event.preventDefault();
             deleteWork(works[i].id);
+            initModalGallery();
+            initPage();
         });
     };
 
@@ -250,6 +246,7 @@ async function initModalGallery() {
 
 // Fonction pour supprimer les travaux.
 async function deleteWork(workId) {
+    // Définition des données
     const endpoint = `http://localhost:5678/api/works/${workId}`;
     const authToken = localStorage.getItem('token');
     const fetchOptions = {
@@ -259,6 +256,7 @@ async function deleteWork(workId) {
         }
     };
 
+    // Envoie de la requete
     try {
         const serverResponse = await fetch(endpoint, fetchOptions);
         if (!serverResponse.ok) {
@@ -276,6 +274,8 @@ async function deleteWork(workId) {
 function initAddWork() {
     const addPhotoButton = document.getElementById("ajoutPhoto");
     const iconsZone = document.querySelector(".iconeModale");
+
+    // Modification des display
     document.getElementById("GalleryModaleZone").style.display = "none";
     addPhotoButton.style.display = "flex";
     iconsZone.style.flexDirection = "row-reverse";
@@ -283,15 +283,17 @@ function initAddWork() {
     // Verifie si la flèche retour existe
     let backButtonExists = document.getElementById("back");
     if (!backButtonExists) {
-        // Si elle n'existe pas, la créer :
+        // Si elle n'existe pas, on la créer :
         const backButton = document.createElement("img");
         backButton.setAttribute("src", "assets/icones/arrow-left.svg");
         backButton.style.height = "21px";
         backButton.style.width = "21px";
         backButton.id = "back";
+
         // Ajout de la flèche retour
         iconsZone.appendChild(backButton);
 
+        // Ajout de l'évenement sur le bouton retour
         backButton.addEventListener("click", () => {
             initModalGallery()
         });
@@ -303,7 +305,7 @@ function initAddWork() {
 // Fonction pour vérifier si le formulaire est remplis entièrement
 function checkFormCompletion() {
     // Vérifie si tous les champs requis sont remplis
-    if (title !== "" && img !== "" && category !== "") {
+    if (title !== "" && image !== "" && category !== "") {
         console.log("Tous les champs sont remplis. Prêt à soumettre.");
         // Activer le bouton
         btnSubmit.setAttribute("type", "submit");
@@ -312,7 +314,7 @@ function checkFormCompletion() {
     // Désactiver le bouton si la condition n'est pas remplie
     else {
         btnSubmit.setAttribute("type", "");
-        btnSubmit.style.backgroundColor = "#ccc"
+        btnSubmit.style.backgroundColor = "#ccc";
     }
 }
 
@@ -324,7 +326,7 @@ async function sendWork(workData) {
     // Création du formData avec les info néséssaire a la requete
     const workFormData = new FormData();
     workFormData.append('title', workData.title);
-    workFormData.append('image', workData.img); 
+    workFormData.append('image', workData.image); 
     workFormData.append('category', workData.category);
 
     const fetchOptions = {
@@ -335,6 +337,7 @@ async function sendWork(workData) {
       }
     };
   
+    // Envoie de la requete
     try {
       const fetchResponse = await fetch(endpoint, fetchOptions);
       if (!fetchResponse.ok) {
@@ -345,5 +348,8 @@ async function sendWork(workData) {
     } catch(fetchError) {
       console.error('Error posting the work:', fetchError);
     }
+    
+    // Actualise sans recharger la page
+    initPage();
 }
 

@@ -17,8 +17,15 @@ let image = "";
 let category = "";
 
 
+
 // Ecouteur de l'évènement load sur la page
 window.addEventListener('load', function() {
+
+    // Initialisation de la page au chargement
+    initPage()
+    filterListener()
+
+
     const userToken = this.localStorage.getItem('token');
     console.log(userToken);
 
@@ -28,10 +35,13 @@ window.addEventListener('load', function() {
         sessionInit();
         const btnLogOut = document.getElementById('logout');
 
+        // Bouton pour afficher la modale
         btnEdit.addEventListener('click', () => {
             document.getElementById('modale').showModal();
             initModalGallery();
         });
+
+        // Pour gérer la fermeture de la modale
         modal.addEventListener("click", function(event) {
             if (event.target === this) {
                 document.querySelector(".GalleryModale").innerHTML = "";
@@ -42,20 +52,22 @@ window.addEventListener('load', function() {
             document.getElementById('modale').close();
         });
 
-
+        // Bouton pour ajouter une photo
         btnAddPhoto.addEventListener("click", () => {
             btnSubmit.setAttribute("type", "");
             checkFormCompletion();
             initAddWork()
         });
 
+        // Pour gérer la déconnection
         btnLogOut.addEventListener("click", () => {
             this.localStorage.removeItem('token');
             this.window.location.href = "index.html";
         });
 
         
-
+        
+        // Formulaire d'ajout
         inputImage.addEventListener("change", function() {
             if (this.files && this.files[0]) {
                 image = URL.createObjectURL(this.files[0]);
@@ -89,11 +101,11 @@ window.addEventListener('load', function() {
         });
 
 
+        // Gérer l'envoie du formulaire
         form.addEventListener("submit", function(event) {
-            const data = {title, image, category};
             event.preventDefault();
+            const data = {title, image, category};
             sendWork(data);
-            initPage();
             console.log("Sent!");
             form.reset();
             inputImageArea.style.display = "flex";
@@ -105,10 +117,3 @@ window.addEventListener('load', function() {
         });
     };
 });
-
-// Initialize works on the page
-initPage()
-// Event listener for filter buttons to change their style
-styleFilter()
-// Event listener to apply filters
-filterListener()
