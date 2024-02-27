@@ -1,4 +1,4 @@
-/* Réinitialisation des marges et des paddings */
+/*Styles généraux*/
 * {
     box-sizing: border-box;
 }
@@ -13,7 +13,6 @@ html, body {
 }
 
 body {
-    /* Active Flexbox pour organiser les enfants de body */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +26,9 @@ a:hover {
 	cursor: pointer;
 	color: #B1663C;
 }
+
+
+
 /* Styles pour le header */
 header {
     margin: 50px 0px;
@@ -84,14 +86,16 @@ li:hover {
     color: #B1663C;
 }
 
+
+
 /* Style pour le contenu principal (main) */
 main {
     display: flex;
     width: 100%;
-    flex: 1; /* Permet à main d'occuper tout l'espace disponible, poussant le footer en bas */
+    flex: 1;
     justify-content: center;
 }
-.zone_log {
+.zoneLog {
     display: flex;
     width: 33.3%;
     height: auto;
@@ -118,7 +122,7 @@ h2 {
     width: 75%;
     font-family: Work Sans;
 }
-.input-log {
+.inputLog {
     width: 100%;
     height: 51px;
     border: none;
@@ -126,11 +130,11 @@ h2 {
     font-size: 19px;
     padding: 3px 12px;
 }
-.input-log:focus {
+.inputLog:focus {
     border: none;
     outline: none;
 }
-.zone_log form {
+.zoneLog form {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -150,11 +154,14 @@ h2 {
 #btnSubmit:hover {
     cursor: pointer;
 }
-.zone_log a {
+.zoneLog a {
     color: #3D3D3D;
     text-decoration: underline;
     font-family: Work Sans;
 }
+
+
+
 /* Styles pour le footer */
 footer {
     margin-top: auto;

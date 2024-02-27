@@ -26,7 +26,7 @@ async function log(email, password) {
         }
 
         if (!respLog.ok) {
-            throw new Error(`Erreur ${respLog.status}: ${await respLog.text()}`);
+            throw new Error(`Erreur ${ respLog.status }: ${ await respLog.text() }`);
         }
 
         const user = await respLog.json();

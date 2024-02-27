@@ -21,29 +21,6 @@ async function fetchWorks() {
 
 
 
-async function fetchCategories() {
-    let categories;
-    try {
-        // Récupération des catégories depuis l'API
-        const response = await fetch("http://localhost:5678/api/categories");
-        // Vérification du statut de la réponse
-        if (!response.ok) {
-            // Echec de la requête API
-            throw new Error(`HTTP Error: ${response.status}`);
-        }
-        // Conversion de la réponse en JSON
-        categories = await response.json();
-    } catch(error) {
-        console.error("Erreur lors de la récupération des catégories :", error);
-        // Initialisation des catégories à un tableau vide en cas d'erreur
-        categories = [];
-    }
-    // Retour des catégories
-    return categories;
-}
-
-
-
 // Fonction pour afficher la galerie dynamiquement
 async function initPage() {
     // Utilisation de fetchWorks pour obtenir la liste des travaux
@@ -72,13 +49,7 @@ async function initPage() {
 async function filterListener() { // Fonction a modifier pour récupérer les catégories dynamiquement
     // Chargement de la liste des travaux
     let worksList = await fetchWorks();
-    let catList = await fetchCategories();
-    console.log(catList);
     let filterButtons = document.querySelectorAll(".btnFiltre");
-
-    for (let i=0; i<catList.length; i++) {
-        console.log(catList[i].name);
-    }
 
     // Ajout d'un écouteur d'événement sur chaque bouton
     filterButtons.forEach(filterButton => {
