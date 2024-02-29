@@ -26,14 +26,18 @@ window.addEventListener('load', function() {
     filterListener()
 
 
-    const userToken = this.localStorage.getItem('token');
-    console.log(userToken);
-
     // vérifie si le token existe
+    const userToken = this.localStorage.getItem('token');
     if (userToken != null) {
         // si il existe, on initialise la session
         sessionInit();
+
+        // Pour gérer la déconnection
         const btnLogOut = document.getElementById('logout');
+        btnLogOut.addEventListener("click", () => {
+            this.localStorage.removeItem('token');
+            this.window.location.href = "index.html";
+        });
 
         // Bouton pour afficher la modale
         btnEdit.addEventListener('click', () => {
@@ -42,27 +46,24 @@ window.addEventListener('load', function() {
         });
 
         // Pour gérer la fermeture de la modale
-        modal.addEventListener("click", function(event) {
-            if (event.target === this) {
-                document.querySelector(".GalleryModale").innerHTML = "";
-                document.getElementById('modale').close();
-            };
-        });
         btnCloseModal.addEventListener("click", () => {
             document.getElementById('modale').close();
+        });
+        modal.addEventListener("click", function(event) {
+            if (event.target === this) {
+                // Si on clique hors de la modale, on la ferme
+                document.getElementById('modale').close();
+            };
         });
 
         // Bouton pour ajouter une photo
         btnAddPhoto.addEventListener("click", () => {
+            // Désactive le bouton submit
             btnSubmit.setAttribute("type", "");
+            // Vérifie l'état du formulair
             checkFormCompletion();
+            // Affiche le formulaire
             initAddWork()
-        });
-
-        // Pour gérer la déconnection
-        btnLogOut.addEventListener("click", () => {
-            this.localStorage.removeItem('token');
-            this.window.location.href = "index.html";
         });
 
         
@@ -105,8 +106,9 @@ window.addEventListener('load', function() {
         form.addEventListener("submit", function(event) {
             event.preventDefault();
             const data = {title, image, category};
+            // Envoie de la requete
             sendWork(data);
-            console.log("Sent!");
+            // Réinitialise le formulair
             form.reset();
             inputImageArea.style.display = "flex";
             displayImage.style.display = "none";

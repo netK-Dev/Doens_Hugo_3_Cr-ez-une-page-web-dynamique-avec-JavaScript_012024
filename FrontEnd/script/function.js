@@ -194,9 +194,14 @@ function sessionInit() {
 
 // Fonction pour initialiser la modale
 async function initModalGallery() {
+
+    // On vide la galerie à l'intérieur de la modale
     document.querySelector(".GalleryModale").innerHTML = "";
+    // On cache la zone ajout photo
     document.getElementById("ajoutPhoto").style.display = "none";
+    // On affiche la zone galerie modale
     document.getElementById("GalleryModaleZone").style.display = "flex";
+    // On affiche le bouton ajout photo
     document.getElementById("addPic").style.display = "block";
 
     // Elever retour le bouton si il existe
@@ -232,11 +237,12 @@ async function initModalGallery() {
         gallery.appendChild(work);
         
         // Ajout de l'événement de suppression sur chaques carrés noirs
-        square.addEventListener("click", function(event) {
-            event.preventDefault();
+        square.addEventListener("click", () => {
             deleteWork(works[i].id);
-            initModalGallery();
+
+            // Actualise les galeries
             initPage();
+            initModalGallery();
         });
     };
 
@@ -272,12 +278,12 @@ async function deleteWork(workId) {
 
 // Fonction pour afficher le formulaire d'ajout de projet
 function initAddWork() {
-    const addPhotoButton = document.getElementById("ajoutPhoto");
+    const addPhotoZone= document.getElementById("ajoutPhoto");
     const iconsZone = document.querySelector(".iconeModale");
 
     // Modification des display
     document.getElementById("GalleryModaleZone").style.display = "none";
-    addPhotoButton.style.display = "flex";
+    addPhotoZone.style.display = "flex";
     iconsZone.style.flexDirection = "row-reverse";
 
     // Verifie si la flèche retour existe

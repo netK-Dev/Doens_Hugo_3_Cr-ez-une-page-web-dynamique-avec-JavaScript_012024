@@ -111,7 +111,7 @@ h2 {
     color: rgb(255, 38, 0);
     font-size: 18px;
 }
-#wrongPass, #wrongEmail {
+#wrongForm {
     display: none;
 }
 
@@ -124,6 +124,7 @@ h2 {
 }
 .inputLog {
     width: 100%;
+    margin-top: 6px;
     height: 51px;
     border: none;
     box-shadow: 0px 4px 14px 1px #e2e2dd;
@@ -133,6 +134,9 @@ h2 {
 .inputLog:focus {
     border: none;
     outline: none;
+}
+label {
+    font-weight: 600;
 }
 .zoneLog form {
     width: 100%;
