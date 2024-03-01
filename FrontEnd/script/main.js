@@ -22,8 +22,8 @@ let category = "";
 window.addEventListener('load', function() {
 
     // Initialisation de la page au chargement
-    initPage()
-    filterListener()
+    initPage();
+    filterListener();
 
 
     // vérifie si le token existe
@@ -58,12 +58,10 @@ window.addEventListener('load', function() {
 
         // Bouton pour ajouter une photo
         btnAddPhoto.addEventListener("click", () => {
-            // Désactive le bouton submit
-            btnSubmit.setAttribute("type", "");
             // Vérifie l'état du formulair
             checkFormCompletion();
             // Affiche le formulaire
-            initAddWork()
+            initAddWork();
         });
 
         
