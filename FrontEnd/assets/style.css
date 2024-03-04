@@ -180,6 +180,14 @@ li:hover {
 #portfolio h2 {
 	text-align: center;
 }
+
+.filtres {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	gap: 12px;
+}
+
 .btnFiltre {
 	font-size: 19px;
 	color: #1D6154;

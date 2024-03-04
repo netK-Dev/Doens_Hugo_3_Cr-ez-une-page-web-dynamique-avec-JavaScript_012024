@@ -23,7 +23,6 @@ window.addEventListener('load', function() {
 
     // Initialisation de la page au chargement
     initPage();
-    filterListener();
 
 
     // vérifie si le token existe
