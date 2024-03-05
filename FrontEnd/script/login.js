@@ -53,10 +53,10 @@ Submit.addEventListener("click", (event) => {
     // Réinitialise les erreurs
     resetError()
     // récupération de l'email
-    const E = input_email.value;
+    const Email = input_email.value;
     // récupération du mot de passe
-    const P = input_password.value;
+    const Passe = input_password.value;
 
     // Tentative de connexion
-    log(E, P);
+    log(Email, Passe);
 });

@@ -172,14 +172,33 @@ async function initModalGallery() {
 
 
 // Fonction pour afficher le formulaire d'ajout de projet
-function initAddWork() {
+async function initAddWork() {
     const addPhotoZone = document.getElementById("ajoutPhoto");
     const iconsZone = document.querySelector(".iconeModale");
+    const categoryOptions = document.getElementById("category");
+    const categoryListe = await fetchCategories();
 
     // Modification des affichages
     document.getElementById("GalleryModaleZone").style.display = "none";
     addPhotoZone.style.display = "flex";
     iconsZone.style.flexDirection = "row-reverse";
+
+    // On vide la liste des options
+    categoryOptions.innerHTML = ""
+
+    // Création de l'option vide
+    const selectedOption = document.createElement("option");
+    selectedOption.selected = true;
+    categoryOptions.appendChild(selectedOption);
+
+    // Création des options à partir des catégories disponible
+    for (let i=0; i<categoryListe.length; i++) {
+        const option = document.createElement("option");
+        option.setAttribute("value", `${i+1}`);
+        option.innerHTML = categoryListe[i].name;
+
+        categoryOptions.appendChild(option);
+    }
 
     // Vérifie si la flèche retour existe
     let backButtonExists = document.getElementById("back");
